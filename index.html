@@ -259,6 +259,7 @@
         .person .name a { color: var(--dark); }
         .person .name a:hover { color: var(--orange); }
         .person .aff { font-size: 13.5px; color: var(--muted); font-style: italic; line-height: 1.4; }
+        .avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
 
         /* ---------- PC / related lists ---------- */
         .pc-list { columns: 2; column-gap: 40px; }
@@ -345,6 +346,8 @@
             <li><a href="#overview">Overview</a></li>
             <li><a href="#speakers">Speakers</a></li>
             <li><a href="#call">Call for Papers</a></li>
+            <li><a href="#awards">Paper Awards</a></li>
+            <li><a href="#rising-star">Rising Star</a></li>
             <li><a href="#schedule">Schedule</a></li>
             <li><a href="#organizers">Organizers</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -408,32 +411,32 @@
         <p class="note">Specific speaker confirmations to be finalized. (Listed in no particular order.)</p>
         <div class="people">
             <div class="person spk">
-                <div class="avatar">LM</div>
+                <div class="avatar"><img src="assets/people/lei_ma.jpg" alt="Lei Ma"></div>
                 <div class="name"><a href="https://scholar.google.com/citations?user=xsfGc58AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Lei Ma</a></div>
                 <div class="aff">The University of Tokyo, Japan &amp; University of Alberta, Canada</div>
             </div>
             <div class="person spk">
-                <div class="avatar">YG</div>
+                <div class="avatar"><img src="assets/people/Yarin_Gal.jpg" alt="Yarin Gal"></div>
                 <div class="name"><a href="https://www.cs.ox.ac.uk/people/yarin.gal/website/index.html" target="_blank" rel="noopener">Yarin Gal</a></div>
                 <div class="aff">University of Oxford</div>
             </div>
             <div class="person spk">
-                <div class="avatar">YZ</div>
+                <div class="avatar"><img src="assets/people/Yizhe_Zhang.jpg" alt="Yizhe Zhang"></div>
                 <div class="name"><a href="https://dreasysnail.github.io/" target="_blank" rel="noopener">Yizhe Zhang</a></div>
                 <div class="aff">Meta</div>
             </div>
             <div class="person spk">
-                <div class="avatar">LQ</div>
+                <div class="avatar"><img src="assets/people/Lianhui_Qin.jpg" alt="Lianhui Qin"></div>
                 <div class="name"><a href="https://lianhui.ucsd.edu/" target="_blank" rel="noopener">Lianhui Qin</a></div>
                 <div class="aff">UC San Diego</div>
             </div>
             <div class="person spk">
-                <div class="avatar">HZ</div>
+                <div class="avatar"><img src="assets/people/Hongyu_Zhang.jpg" alt="Hongyu Zhang"></div>
                 <div class="name"><a href="https://sites.google.com/site/hongyujohn" target="_blank" rel="noopener">Hongyu Zhang</a></div>
                 <div class="aff">Chongqing University &amp; University of Newcastle</div>
             </div>
             <div class="person spk">
-                <div class="avatar">BL</div>
+                <div class="avatar"><img src="assets/people/Bo_Li.jpg" alt="Bo Li"></div>
                 <div class="name"><a href="https://scholar.google.com/citations?user=K8vJkTcAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Bo Li</a></div>
                 <div class="aff">University of Illinois Urbana&ndash;Champaign</div>
             </div>
@@ -528,6 +531,92 @@
     </div>
 </section>
 
+<!-- ============ PAPER AWARDS ============ -->
+<section id="awards">
+    <div class="container">
+        <h2 class="section-heading">Paper Awards</h2>
+        <p class="lead">
+            To recognize the strongest contributions, the workshop will present a <strong>Best Paper Award</strong> and
+            a <strong>Best Student Paper Award</strong>. Awards are selected by the Program Committee based on technical
+            quality, novelty, and relevance to trustworthy, efficient, and safe (v)LLM deployment under real-world
+            resource budgets. Winners will be invited to present their work in a dedicated in-person oral session.
+        </p>
+
+        <div class="theme-card">
+            <h4>Best Paper Award</h4>
+            <p style="margin:0;">Awarded to the submission that makes the most significant and well-executed contribution
+                across the workshop&rsquo;s three themes.</p>
+        </div>
+        <div class="theme-card">
+            <h4>Best Student Paper Award</h4>
+            <p style="margin:0;">Awarded to the strongest submission whose first author is a student at the time of
+                submission.</p>
+        </div>
+
+        <p class="note">Winners will be announced at the workshop. In-person presentation is required to receive the
+            award. Recipients will be listed here after the event.</p>
+    </div>
+</section>
+
+<!-- ============ RISING STAR AWARD ============ -->
+<section id="rising-star">
+    <div class="container">
+        <h2 class="section-heading">Rising Star Award Announcement</h2>
+        <p class="lead">
+            The <strong>Trust Under Budget (TUB) Rising Star Award</strong> recognizes early-career researchers whose
+            work advances reliable, efficient, and safe deployment of (vision-)large language models under explicit
+            resource constraints. Awardees will receive a certificate and be invited to deliver an in-person spotlight
+            talk at the workshop.
+        </p>
+
+        <h3 class="sub-heading">Scope and Vision</h3>
+        <p class="lead">
+            Modern Web applications increasingly rely on large models that must operate within strict token, compute,
+            memory, latency, energy, and cost budgets. This award highlights early-career researchers who make such
+            systems more reliable, efficient, and safe &mdash; and who connect principled methods to real deployment
+            outcomes such as answer quality, agent reliability, moderation robustness, and serving cost. We warmly
+            encourage applications from researchers of underrepresented groups in the AI, ML, Web, and systems
+            communities.
+        </p>
+
+        <h3 class="sub-heading">Research Areas of Interest</h3>
+        <ul class="content">
+            <li>Reliable reasoning and faithfulness under constrained tokens and compute</li>
+            <li>Efficient inference: speculative decoding, efficient attention, KV-cache and quantization-aware serving</li>
+            <li>Safety preservation after quantization, pruning, distillation, and compression</li>
+            <li>Guardrails and prompt-injection defenses within latency budgets</li>
+            <li>Benchmarks, metrics, and evaluation protocols for trust under budget</li>
+            <li>Open-source libraries, datasets, or systems for trustworthy Web-scale deployment</li>
+        </ul>
+
+        <h3 class="sub-heading">Eligibility</h3>
+        <ul class="content">
+            <li>Senior PhD students currently enrolled in a PhD program, or</li>
+            <li>Early-career researchers (e.g., postdocs) who recently obtained their PhD.</li>
+        </ul>
+
+        <h3 class="sub-heading">Application Materials</h3>
+        <ol class="content">
+            <li><strong>CV</strong>, including a list of publications.</li>
+            <li><strong>Research statement</strong> (up to 2 pages, single column, excluding references) describing
+                accomplishments and future directions.</li>
+            <li><strong>Two recommendation letters</strong>, submitted directly by the referees.</li>
+        </ol>
+
+        <h3 class="sub-heading">Key Dates</h3>
+        <table class="dates">
+            <tr><td>Application Materials Due</td><td class="tbd">TBD</td></tr>
+            <tr><td>Recommendation Letters Due</td><td class="tbd">TBD</td></tr>
+            <tr><td>Awards Announced</td><td class="tbd">TBD (at the workshop)</td></tr>
+        </table>
+        <p class="note">All deadlines are 11:59 PM Anywhere on Earth (AoE). The application portal and dates will be
+            announced soon.</p>
+        <div class="center">
+            <a class="btn disabled" href="#">Application Portal — Coming Soon</a>
+        </div>
+    </div>
+</section>
+
 <!-- ============ SCHEDULE ============ -->
 <section id="schedule">
     <div class="container">
@@ -570,7 +659,7 @@
         <h2 class="section-heading">Organizing Committee</h2>
         <div class="people">
             <div class="person">
-                <div class="avatar">XC</div>
+                <div class="avatar"><img src="assets/people/xuchen.png" alt="Xu Chen"></div>
                 <div class="name"><a href="https://xuchen8391sky.github.io/xuchen.github.io/" target="_blank" rel="noopener">Xu Chen</a></div>
                 <div class="aff">Alibaba Group</div>
             </div>
@@ -580,27 +669,27 @@
                 <div class="aff">Microsoft Research</div>
             </div>
             <div class="person">
-                <div class="avatar">SG</div>
+                <div class="avatar"><img src="assets/people/shangding_gu.jpg" alt="Shangding Gu"></div>
                 <div class="name"><a href="https://people.eecs.berkeley.edu/~shangding.gu/index.html" target="_blank" rel="noopener">Shangding Gu</a></div>
                 <div class="aff">Shanghai Jiao Tong University</div>
             </div>
             <div class="person">
-                <div class="avatar">HZ</div>
+                <div class="avatar"><img src="assets/people/huangjie.jpg" alt="Huangjie Zheng"></div>
                 <div class="name"><a href="https://jegzheng.github.io/" target="_blank" rel="noopener">Huangjie Zheng</a></div>
                 <div class="aff">Apple Research</div>
             </div>
             <div class="person">
-                <div class="avatar">JY</div>
+                <div class="avatar"><img src="assets/people/jiangchao_yao.jpg" alt="Jiangchao Yao"></div>
                 <div class="name"><a href="https://sunarker.github.io/" target="_blank" rel="noopener">Jiangchao Yao</a></div>
                 <div class="aff">Shanghai Jiao Tong University</div>
             </div>
             <div class="person">
-                <div class="avatar">AK</div>
+                <div class="avatar"><img src="assets/people/alois_knoll.jpg" alt="Alois Knoll"></div>
                 <div class="name"><a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/" target="_blank" rel="noopener">Alois Knoll</a></div>
                 <div class="aff">Technical University of Munich</div>
             </div>
             <div class="person">
-                <div class="avatar">IT</div>
+                <div class="avatar"><img src="assets/people/ivor_tsang.jpg" alt="Ivor W. Tsang"></div>
                 <div class="name"><a href="https://www.a-star.edu.sg/cfar/about-cfar/management/prof-ivor-tsang" target="_blank" rel="noopener">Ivor W. Tsang</a></div>
                 <div class="aff">A*STAR Centre for Frontier AI Research</div>
             </div>
@@ -613,10 +702,8 @@
     <div class="container">
         <h2 class="section-heading">Contact</h2>
         <p class="lead" style="text-align:left;">
-            <strong>Primary Contact — Xu Chen</strong> (Alibaba Group)<br>
-            Email: <a href="mailto:xuchen2016@sjtu.edu.cn">xuchen2016@sjtu.edu.cn</a> /
-            <a href="mailto:huaisong.cx@alibaba-inc.com">huaisong.cx@alibaba-inc.com</a><br>
-            Web: <a href="https://xuchen8391sky.github.io/xuchen.github.io/" target="_blank" rel="noopener">https://xuchen8391sky.github.io/xuchen.github.io/</a>
+            For any questions about the workshop, submissions, or awards, please contact the Organizing Committee:<br>
+            Email: <a href="mailto:www_tub_committe@163.com">www_tub_committe@163.com</a>
         </p>
     </div>
 </section>
