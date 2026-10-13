@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Trust Under Budget: Reliable, Efficient, and Safe (Vision) Large Language Models for Deployment — a full-day workshop at The Web Conference (WWW) 2027.">
+    <meta name="author" content="Trust Under Budget Workshop Organizing Committee">
+
+    <title>Trust Under Budget — WWW 2027 Workshop</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Arvo:wght@400;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --orange: #f58025;
+            --blue: #2476f1;
+            --dark: #1b2733;
+            --text: #2c3e50;
+            --muted: #7a8a99;
+            --bg-alt: #f6f8fa;
+            --border: #e4e9ee;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 17px;
+            background: #fff;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Arvo', Georgia, serif; }
+
+        a { color: var(--blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 100px 20px 80px;
+            background:
+                linear-gradient(180deg, rgba(16,27,36,0.78) 0%, rgba(16,27,36,0.55) 45%, rgba(16,27,36,0.85) 100%),
+                url("assets/dublin-hero.jpg");
+            background-size: cover;
+            background-position: center 62%;
+            background-color: var(--dark);
+        }
+
+        .hero-inner { max-width: 950px; }
+
+        .hero .badge {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.55);
+            border-radius: 30px;
+            padding: 6px 18px;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            line-height: 1.3;
+            margin: 0 0 18px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            margin: 0 0 26px;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+        }
+
+        .hero .meta {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        .hero .meta span { color: #ffd9b3; font-weight: 700; }
+
+        .hero .conf-link { color: #fff; border-bottom: 2px solid var(--orange); }
+        .hero .conf-link:hover { text-decoration: none; color: #ffd9b3; }
+
+        /* ---------- Nav ---------- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .nav-brand {
+            font-family: 'Arvo', serif;
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 17px;
+            padding: 16px 0;
+            white-space: nowrap;
+        }
+        .nav-brand span { color: var(--orange); }
+
+        .nav-links { display: flex; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+        .nav-links li a {
+            display: block;
+            padding: 20px 14px;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 14.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-links li a:hover { color: var(--orange); text-decoration: none; }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 26px;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 14px 0;
+        }
+
+        /* ---------- Sections ---------- */
+        section { padding: 60px 20px; }
+        section:nth-of-type(even) { background: var(--bg-alt); }
+
+        .container { max-width: 1000px; margin: 0 auto; }
+
+        .section-heading {
+            font-size: 30px;
+            color: var(--dark);
+            margin: 0 0 10px;
+            position: relative;
+            padding-bottom: 14px;
+        }
+        .section-heading::after {
+            content: "";
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 60px; height: 4px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .sub-heading {
+            font-size: 21px;
+            color: var(--blue);
+            margin: 34px 0 12px;
+        }
+
+        p.lead { text-align: justify; }
+
+        ul.content, ol.content { text-align: justify; }
+        ul.content li, ol.content li { margin-bottom: 8px; }
+
+        .theme-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--orange);
+            border-radius: 8px;
+            padding: 22px 26px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .theme-card h4 {
+            margin: 0 0 10px;
+            color: var(--dark);
+            font-size: 19px;
+        }
+        .theme-card ul { margin: 0; padding-left: 20px; }
+        .theme-card ul li { margin-bottom: 5px; }
+
+        /* ---------- Tables ---------- */
+        table.dates, table.schedule {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+            font-size: 16px;
+        }
+        table.dates td, table.schedule td, table.schedule th {
+            padding: 13px 18px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+        table.schedule th {
+            background: var(--dark);
+            color: #fff;
+            font-family: 'Arvo', serif;
+        }
+        table.dates td:first-child { font-weight: 700; width: 55%; }
+        table.schedule tr.session td {
+            background: #eef4ff;
+            font-weight: 700;
+            color: var(--blue);
+        }
+        table.schedule tr.break td { color: var(--muted); font-style: italic; }
+        table.schedule td.time { white-space: nowrap; font-weight: 700; width: 150px; }
+        .tbd { color: var(--orange); font-weight: 700; }
+
+        .note { color: var(--muted); font-style: italic; font-size: 15px; }
+
+        /* ---------- People grid ---------- */
+        .people {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 28px 20px;
+            margin-top: 26px;
+        }
+        .person { text-align: center; }
+        .avatar {
+            width: 110px; height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arvo', serif;
+            font-size: 34px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, var(--blue), var(--dark));
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        .person.spk .avatar { background: linear-gradient(135deg, var(--orange), #c85a0e); }
+        .person .name { font-family: 'Arvo', serif; font-weight: 700; font-size: 16px; color: var(--dark); }
+        .person .name a { color: var(--dark); }
+        .person .name a:hover { color: var(--orange); }
+        .person .aff { font-size: 13.5px; color: var(--muted); font-style: italic; line-height: 1.4; }
+
+        /* ---------- PC / related lists ---------- */
+        .pc-list { columns: 2; column-gap: 40px; }
+        .pc-list li { margin-bottom: 7px; break-inside: avoid; }
+
+        .related li { margin-bottom: 14px; }
+
+        /* ---------- Button ---------- */
+        .btn {
+            display: inline-block;
+            background: var(--orange);
+            color: #fff !important;
+            font-weight: 700;
+            padding: 13px 30px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 15px;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #d96d16; text-decoration: none; }
+        .btn.disabled { background: var(--muted); cursor: not-allowed; pointer-events: none; }
+
+        .center { text-align: center; }
+
+        /* ---------- Contact / footer ---------- */
+        .contact {
+            background: var(--dark) !important;
+            color: #d7e0ea;
+        }
+        .contact .section-heading { color: #fff; }
+        .contact a { color: #8fb8ff; }
+
+        footer {
+            background: #121b24;
+            color: #8a99a8;
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 14px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 820px) {
+            .hero h1 { font-size: 28px; }
+            .hero .subtitle { font-size: 17px; }
+            .pc-list { columns: 1; }
+            .nav-toggle { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                border-top: 1px solid var(--border);
+            }
+            .nav-links.open { display: flex; }
+            .nav-links li a { padding: 14px 0; }
+            .nav-inner { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+
+<body id="home">
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+    <div class="hero-inner">
+        <div class="badge">The Web Conference (WWW) 2027 &nbsp;&middot;&nbsp; Full-Day Workshop</div>
+        <h1>Trust Under Budget</h1>
+        <p class="subtitle">Reliable, Efficient, and Safe (Vision) Large Language Models for Deployment</p>
+        <p class="meta">
+            <span>10&ndash;14 May 2027</span> &nbsp;&middot;&nbsp; <span>Dublin, Ireland</span><br>
+            Co-located with
+            <a class="conf-link" href="https://www2027.thewebconf.org" target="_blank" rel="noopener">The Web Conference 2027</a>
+        </p>
+    </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav>
+    <div class="nav-inner">
+        <div class="nav-brand">Trust Under <span>Budget</span></div>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#call">Call for Papers</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#organizers">Organizers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ============ OVERVIEW ============ -->
+<section id="overview">
+    <div class="container">
+        <h2 class="section-heading">Workshop Overview</h2>
+        <p class="lead">
+            We propose a full-day workshop on deploying trustworthy (vision-)large language models under
+            real-world resource constraints. In production environments, <strong>reliability, efficiency, and
+            safety</strong> are not independent objectives — they are jointly bounded by explicit token, compute,
+            memory, latency, energy, and monetary budgets. This workshop introduces a <strong>&ldquo;trust under
+            budget&rdquo;</strong> framework organized around three pillars:
+        </p>
+        <ol class="content">
+            <li><strong>Reliable reasoning under budget</strong> — maintaining correctness and faithfulness when
+                inference tokens and compute are constrained;</li>
+            <li><strong>Efficient inference within deployment budgets</strong> — satisfying latency, memory,
+                throughput, and cost limits simultaneously;</li>
+            <li><strong>Safe deployment after budget-driven optimization</strong> — preserving alignment and safety
+                behaviors after quantization, distillation, and compression.</li>
+        </ol>
+        <p class="lead">
+            By unifying these challenges under a single budget-aware lens, the workshop bridges the AI research and
+            deployment communities, fostering new methods, benchmarks, and evaluation protocols for (v)LLMs that are
+            not only capable but certifiably trustworthy within industrial constraints.
+        </p>
+
+        <h3 class="sub-heading">Objectives</h3>
+        <ul class="content">
+            <li><strong>Define shared problems:</strong> identify deployment scenarios and resource constraints
+                linking reliability, efficiency, and safety.</li>
+            <li><strong>Connect research and practice:</strong> compare methods and production failure cases across
+                Web, ML, systems, and AI safety communities.</li>
+            <li><strong>Advance evaluation:</strong> outline a common checklist of tasks, metrics, and reporting
+                practices for quality, safety, and resource use.</li>
+            <li><strong>Set a research agenda:</strong> publish a post-workshop report of open problems, evaluation
+                priorities, and collaboration opportunities.</li>
+        </ul>
+
+        <h3 class="sub-heading">Relevance to The Web Conference 2027</h3>
+        <p class="lead">
+            The workshop connects directly to search, recommendation, and advertising under latency and cost
+            constraints; Web agents requiring reliable tool use and prompt-injection defenses; and content generation
+            and moderation at platform scale. It brings together The Web Conference's academic and industry
+            communities in information retrieval, machine learning, and scalable systems. Contributions will link
+            model-level methods to service outcomes such as answer quality, agent reliability, moderation robustness,
+            and serving cost, grounding trustworthy AI research in practical Web deployment.
+        </p>
+    </div>
+</section>
+
+<!-- ============ SPEAKERS ============ -->
+<section id="speakers">
+    <div class="container">
+        <h2 class="section-heading">Tentative Invited Speakers</h2>
+        <p class="note">Specific speaker confirmations to be finalized. (Listed in no particular order.)</p>
+        <div class="people">
+            <div class="person spk">
+                <div class="avatar">LM</div>
+                <div class="name"><a href="https://scholar.google.com/citations?user=xsfGc58AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Lei Ma</a></div>
+                <div class="aff">The University of Tokyo, Japan &amp; University of Alberta, Canada</div>
+            </div>
+            <div class="person spk">
+                <div class="avatar">YG</div>
+                <div class="name"><a href="https://www.cs.ox.ac.uk/people/yarin.gal/website/index.html" target="_blank" rel="noopener">Yarin Gal</a></div>
+                <div class="aff">University of Oxford</div>
+            </div>
+            <div class="person spk">
+                <div class="avatar">YZ</div>
+                <div class="name"><a href="https://dreasysnail.github.io/" target="_blank" rel="noopener">Yizhe Zhang</a></div>
+                <div class="aff">Meta</div>
+            </div>
+            <div class="person spk">
+                <div class="avatar">LQ</div>
+                <div class="name"><a href="https://lianhui.ucsd.edu/" target="_blank" rel="noopener">Lianhui Qin</a></div>
+                <div class="aff">UC San Diego</div>
+            </div>
+            <div class="person spk">
+                <div class="avatar">HZ</div>
+                <div class="name"><a href="https://sites.google.com/site/hongyujohn" target="_blank" rel="noopener">Hongyu Zhang</a></div>
+                <div class="aff">Chongqing University &amp; University of Newcastle</div>
+            </div>
+            <div class="person spk">
+                <div class="avatar">BL</div>
+                <div class="name"><a href="https://scholar.google.com/citations?user=K8vJkTcAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Bo Li</a></div>
+                <div class="aff">University of Illinois Urbana&ndash;Champaign</div>
+            </div>
+            <div class="person spk">
+                <div class="avatar">XC</div>
+                <div class="name"><a href="https://scholar.google.com/citations?user=d4W1UT0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Xinyun Chen</a></div>
+                <div class="aff">Meta</div>
+            </div>
+            <div class="person spk">
+                <div class="avatar">YY</div>
+                <div class="name"><a href="https://www.a-star.edu.sg/cfar/about-cfar/our-team/yao-yinghua" target="_blank" rel="noopener">Yinghua Yao</a></div>
+                <div class="aff">A*STAR Centre for Frontier AI Research</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CALL FOR PAPERS ============ -->
+<section id="call">
+    <div class="container">
+        <h2 class="section-heading">Call for Contributions</h2>
+        <p class="lead">
+            Large language models increasingly support search, recommendation, content generation, and autonomous Web
+            agents. Deploying these systems requires more than benchmark accuracy: answers must remain faithful, agents
+            must resist manipulation, and safety checks must fit within serving budgets. As adoption grows, token
+            limits, GPU memory, latency, energy, and cost make reliability, efficiency, and safety inseparable
+            deployment concerns.
+        </p>
+        <p class="lead">
+            This workshop studies these interactions through a &ldquo;trust under budget&rdquo; framework. Truncated
+            reasoning can reduce correctness, compression can weaken refusal behavior, and runtime guardrails consume
+            latency. These trade-offs motivate joint evaluation under explicit resource constraints. We welcome
+            theoretical methods, benchmarks, and industrial case studies across three themes:
+        </p>
+
+        <div class="theme-card">
+            <h4>1. Reliable Reasoning Under Budget</h4>
+            <p>Maintain correctness, faithfulness, and stability with limited tokens and compute:</p>
+            <ul>
+                <li>Chain-of-thought verification and hallucination detection</li>
+                <li>Stable latent reasoning under constrained decoding</li>
+                <li>Budget-aware process rewards and self-consistency</li>
+                <li>Adaptive depth, early termination, and reasoning compression</li>
+                <li>Reasoning benchmarks under tightening budgets</li>
+            </ul>
+        </div>
+
+        <div class="theme-card">
+            <h4>2. Efficient Inference Within Deployment Budgets</h4>
+            <p>Meet latency, memory, throughput, and cost requirements:</p>
+            <ul>
+                <li>Speculative decoding, efficient attention, and KV-cache compression</li>
+                <li>Quantization-aware serving with quality guarantees</li>
+                <li>Adaptive computation and query-dependent early exit</li>
+                <li>Joint measurement of speed, quality, safety, and cost</li>
+            </ul>
+        </div>
+
+        <div class="theme-card">
+            <h4>3. Safe Deployment After Budget-Driven Optimization</h4>
+            <p>Preserve alignment and robustness after acceleration:</p>
+            <ul>
+                <li>Safety preservation after quantization, pruning, and distillation</li>
+                <li>Transfer of refusal behavior to compact models</li>
+                <li>Guardrails and prompt-injection defenses within latency budgets</li>
+                <li>Monitoring unsafe behavior in optimized production models</li>
+                <li>Joint evaluation of efficiency gains and safety preservation</li>
+            </ul>
+        </div>
+
+        <h3 class="sub-heading">Submission Guidelines</h3>
+        <p class="lead">
+            We invite <strong>regular papers</strong> (up to 8 pages) and <strong>short / position papers</strong>
+            (up to 4 pages), excluding references, formatted in the
+            <a href="https://www.acm.org/publications/proceedings-template" target="_blank" rel="noopener">ACM
+            style</a>. All submissions receive <strong>double-blind</strong> peer review via
+            <strong>OpenReview</strong>. All submissions must be original and not under review elsewhere. Accepted
+            papers will receive poster slots; six will also be selected for contributed talks.
+        </p>
+        <h3 class="sub-heading">Important Dates</h3>
+        <table class="dates">
+            <tr><td>Paper Submission Deadline</td><td class="tbd">TBD</td></tr>
+            <tr><td>Notification of Acceptance</td><td class="tbd">TBD</td></tr>
+            <tr><td>Camera-Ready Deadline</td><td class="tbd">TBD</td></tr>
+            <tr><td>Workshop Date</td><td>10&ndash;14 May 2027 (TBD within conference dates)</td></tr>
+        </table>
+        <p class="note">All deadlines are 11:59 PM Anywhere on Earth (AoE). Dates will be finalized and announced soon.</p>
+
+        <div class="center">
+            <a class="btn disabled" href="#">Submission Portal — Coming Soon</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section id="schedule">
+    <div class="container">
+        <h2 class="section-heading">Tentative Schedule</h2>
+        <p class="lead">
+            The full-day workshop includes invited talks, contributed talks, posters, and a panel. Each invited talk
+            includes Q&amp;A.
+        </p>
+        <table class="schedule">
+            <tr><th class="time">Time</th><th>Programme</th></tr>
+            <tr><td class="time">09:00&ndash;09:05</td><td>Welcome remarks (Ivor W. Tsang)</td></tr>
+            <tr class="session"><td colspan="2">Session 1 &mdash; Reliable Reasoning Under Budget</td></tr>
+            <tr><td class="time">09:05&ndash;09:50</td><td>Invited Talk 1</td></tr>
+            <tr><td class="time">09:50&ndash;10:00</td><td>Contributed Talk 1</td></tr>
+            <tr><td class="time">10:00&ndash;10:45</td><td>Invited Talk 2</td></tr>
+            <tr><td class="time">10:45&ndash;10:55</td><td>Contributed Talk 2</td></tr>
+            <tr class="break"><td class="time">10:55&ndash;11:15</td><td>Coffee Break</td></tr>
+            <tr class="session"><td colspan="2">Session 2 &mdash; Efficient Inference Within Deployment Budgets</td></tr>
+            <tr><td class="time">11:15&ndash;12:00</td><td>Invited Talk 3</td></tr>
+            <tr><td class="time">12:00&ndash;12:10</td><td>Contributed Talk 3</td></tr>
+            <tr><td class="time">12:10&ndash;12:55</td><td>Invited Talk 4</td></tr>
+            <tr><td class="time">12:55&ndash;13:05</td><td>Contributed Talk 4</td></tr>
+            <tr class="break"><td class="time">13:05&ndash;14:15</td><td>Lunch + Poster Session</td></tr>
+            <tr class="session"><td colspan="2">Session 3 &mdash; Safe Deployment After Optimization</td></tr>
+            <tr><td class="time">14:15&ndash;15:00</td><td>Invited Talk 5</td></tr>
+            <tr><td class="time">15:00&ndash;15:10</td><td>Contributed Talk 5</td></tr>
+            <tr><td class="time">15:10&ndash;15:55</td><td>Invited Talk 6</td></tr>
+            <tr><td class="time">15:55&ndash;16:05</td><td>Contributed Talk 6</td></tr>
+            <tr class="break"><td class="time">16:05&ndash;16:20</td><td>Coffee Break</td></tr>
+            <tr class="session"><td colspan="2">Session 4 &mdash; Panel Discussion and Poster</td></tr>
+            <tr><td class="time">16:20&ndash;16:35</td><td>Spotlight presentations</td></tr>
+            <tr><td class="time">16:35&ndash;17:30</td><td>Panel discussion: Trust Under Budget in Production (v)LLMs</td></tr>
+        </table>
+    </div>
+</section>
+
+<!-- ============ ORGANIZERS ============ -->
+<section id="organizers">
+    <div class="container">
+        <h2 class="section-heading">Organizing Committee</h2>
+        <div class="people">
+            <div class="person">
+                <div class="avatar">XC</div>
+                <div class="name"><a href="https://xuchen8391sky.github.io/xuchen.github.io/" target="_blank" rel="noopener">Xu Chen</a></div>
+                <div class="aff">Alibaba Group</div>
+            </div>
+            <div class="person">
+                <div class="avatar">LW</div>
+                <div class="name"><a href="https://www.microsoft.com/en-us/research/people/wlu/" target="_blank" rel="noopener">Lu Wang</a></div>
+                <div class="aff">Microsoft Research</div>
+            </div>
+            <div class="person">
+                <div class="avatar">SG</div>
+                <div class="name"><a href="https://people.eecs.berkeley.edu/~shangding.gu/index.html" target="_blank" rel="noopener">Shangding Gu</a></div>
+                <div class="aff">Shanghai Jiao Tong University</div>
+            </div>
+            <div class="person">
+                <div class="avatar">HZ</div>
+                <div class="name"><a href="https://jegzheng.github.io/" target="_blank" rel="noopener">Huangjie Zheng</a></div>
+                <div class="aff">Apple Research</div>
+            </div>
+            <div class="person">
+                <div class="avatar">JY</div>
+                <div class="name"><a href="https://sunarker.github.io/" target="_blank" rel="noopener">Jiangchao Yao</a></div>
+                <div class="aff">Shanghai Jiao Tong University</div>
+            </div>
+            <div class="person">
+                <div class="avatar">AK</div>
+                <div class="name"><a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/" target="_blank" rel="noopener">Alois Knoll</a></div>
+                <div class="aff">Technical University of Munich</div>
+            </div>
+            <div class="person">
+                <div class="avatar">IT</div>
+                <div class="name"><a href="https://www.a-star.edu.sg/cfar/about-cfar/management/prof-ivor-tsang" target="_blank" rel="noopener">Ivor W. Tsang</a></div>
+                <div class="aff">A*STAR Centre for Frontier AI Research</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-heading">Contact</h2>
+        <p class="lead" style="text-align:left;">
+            <strong>Primary Contact — Xu Chen</strong> (Alibaba Group)<br>
+            Email: <a href="mailto:xuchen2016@sjtu.edu.cn">xuchen2016@sjtu.edu.cn</a> /
+            <a href="mailto:huaisong.cx@alibaba-inc.com">huaisong.cx@alibaba-inc.com</a><br>
+            Web: <a href="https://xuchen8391sky.github.io/xuchen.github.io/" target="_blank" rel="noopener">https://xuchen8391sky.github.io/xuchen.github.io/</a>
+        </p>
+    </div>
+</section>
+
+<footer>
+    &copy; 2027 Trust Under Budget Workshop · Co-located with The Web Conference (WWW) 2027.
+</footer>
+
+<script>
+    // Mobile nav toggle
+    var toggle = document.querySelector('.nav-toggle');
+    var links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', function () { links.classList.toggle('open'); });
+    links.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') links.classList.remove('open');
+    });
+</script>
+
+</body>
+</html>
